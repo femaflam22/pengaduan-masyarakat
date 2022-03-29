@@ -11,6 +11,14 @@
             </div>
         </div>
         @endif
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <strong>Berhasil! </strong>{{ $message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+           </div>
+        @endif
         <table class="table table-bordered pt-4 mb-4 table-striped text-capitalize" id="myTable">
             <thead>
                 <tr class="text-center">
@@ -40,7 +48,13 @@
                     </td>
                     @if (auth()->user()->level === 'PETUGAS')
                     <td>
-                        <a href="{{route('report.show', $dt['id'])}}"><span class="badge badge-primary p-2 mt-1">Perbarui Status</span></a>
+                        <form action="{{ route('report.destroy',$dt['id']) }}" method="POST">
+                            <a href="{{route('report.show', $dt['id'])}}"><span class="badge badge-primary p-2 mt-1">Perbarui Status</span></a>
+
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger ml-2 p-1 mt-2" onclick="return confirm(`Hapus Data Pengaduan Dari <?php echo  $dt['citizen']['name'] ?> ?`)">Hapus</button>
+                        </form>
                     </td>
                     @endif
                 </tr>

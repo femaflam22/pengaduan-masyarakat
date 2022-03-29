@@ -29,6 +29,7 @@ Route::post('/report', [ContentController::class, 'store'])->name('report.store'
 Route::get('/report/all', [ContentController::class, 'all'])->name('report.all');
 Route::get('/report/{id}', [ContentController::class, 'show'])->name('report.show');
 Route::patch('/report/{id}', [ContentController::class, 'update'])->name('report.update');
+Route::delete('/report/{id}', [ContentController::class, 'destroy'])->name('report.destroy');
 
 // report admin
 Route::group(['middleware' => ['level']], function () {

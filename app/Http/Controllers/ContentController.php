@@ -139,6 +139,8 @@ class ContentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Content::where('id', $id)->delete();
+
+        return redirect()->back()->with('success', 'Data pengaduan berhasil dihapus!');
     }
 }

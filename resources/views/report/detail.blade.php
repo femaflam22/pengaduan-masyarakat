@@ -14,6 +14,7 @@
                 <div class="container-fluid rounded-0 border-0 mt-4">
                     <div class="row">
                         <div class="col-md-4">
+                            @if (auth()->user())
                             @if (auth()->user()->level === 'PETUGAS')
                             <div class="alert alert-warning">
                                 <div class="mb-3 d-flex justify-content-between">
@@ -33,6 +34,7 @@
                                     <button type="submit" class="btn btn-warning btn-block">Perbarui</button>
                                 </form>
                             </div>
+                            @endif
                             @endif
                             <div class="card rounded-0 border-0 card1">
                                 <div class="row justify-content-center">
